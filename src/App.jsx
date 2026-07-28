@@ -106,14 +106,13 @@ const App = () => {
           <h2>Letter Density</h2>
           <button onClick={() => setShowAll(!showAll)}>{showAll ? "See less ▲" : "See more ▼"}</button>
           <article>
-            {
-            sortLetters.slice(0, 5).map(letter => (
+            {visibleLetters.map(letter => (
               <div key={letter.letterName}>
                 <span>{letter.letterName.toUpperCase()}</span>
                 <meter min="0" max="100" value={letter.percentage}></meter>
                 <span>{letter.amount} ({letter.percentage.toFixed(1)}%)</span>
-              </div>))
-          }  
+              </div>
+            ))}
           </article>
         </section>
     </main>
