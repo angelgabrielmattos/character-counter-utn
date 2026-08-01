@@ -1,25 +1,33 @@
-import { ProgressBar } from "./ProgressBar"
+import { ProgressBar } from "./ProgressBar";
 
-const LetterDensity = ({ sortLetters }) => {
+const LetterDensity = ({
+    visibleLetters,
+    sortLetters,
+    showAll,
+    setShowAll,
+}) => {
     return (
-    <section>
-        <h2>Letter Density</h2>
-        <article>
-        <ul>
-            {
-            sortLetters.slice(0, 5).map(letter => <ProgressBar key={letter.letterName} letter={letter} />)
-            }
-        </ul>
-        </article>
+        <section className="density">
+            <h3>Letter Density</h3>
 
-        <details>
-        <summary>See more</summary>
-        <ul className="meter-list">
-            {
-            sortLetters.slice(5, sortLetters.length).map(letter => <ProgressBar key={letter.letterName} letter={letter} />)
-            }
-        </ul>
-        </details>
+            {visibleLetters.map((letter) => (
+        <ProgressBar
+            key={letter.letterName}
+            letter={letter}
+        />
+        ))}
+
+            {sortLetters.length > 5 && (
+        <a
+            href="#"
+            onClick={(e) => {
+            e.preventDefault();
+            setShowAll(!showAll);
+        }}
+        >
+            {showAll ? "See less ↑" : "See more ↓"}
+        </a>
+        )}
     </section>
     )
 }

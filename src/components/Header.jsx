@@ -3,14 +3,20 @@ import logo from "../assets/logoo.png";
 
 const Header = ({ dark, handleDarkTheme }) => {
     return (
-    <header>
-    <div>
-        <img src={logo} alt="Logo" />
-        <h1>Character Counter</h1>
-    </div>
-    <button onClick={() => handleDarkTheme(!dark)}>☀</button>
-    </header>
+        <header className="topbar">
+            <div className="logo">
+            <img src={logo} alt="Logo" />
+            <span>Character Counter</span>
+            </div>
+
+        <button
+        className="theme-btn"
+        onClick={() => handleDarkTheme(!dark)}
+        >
+        {dark ? "☀" : "☾"}
+        </button>
+        </header>
     )
 }
 
-export { Header } 
+export { Header }
